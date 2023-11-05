@@ -7,6 +7,8 @@ using System.Threading.Tasks;
 
 namespace LINQExample.Extentions
 {
+
+    #region Extenstions
     public static class ExtentionClass
     {
         public static void Gaza<T>(this T obj)
@@ -14,4 +16,5 @@ namespace LINQExample.Extentions
             Console.WriteLine( "HAMAS Is ISIS");
         }
     }
+    #endregion
 }
