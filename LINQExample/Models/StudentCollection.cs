@@ -20,7 +20,7 @@ namespace LINQExample.Data
         {
             //Find method - used to search a list for specific object
             ////use this delegate as parameter:public delegate bool Predicate<T>(T obj)
-            Student? ss = this.Students.Find(x => x.Name == name);
+            Student ss = this.Students.Find(x => x.Name == name);
 
             return ss;
         }
@@ -38,9 +38,12 @@ namespace LINQExample.Data
         public List<Student> GetAllStudentsInCertainKita(int kita)
         {
             //Where method - used to search a list for all objects that match a criteria
-            IEnumerable<Student> students = this.Students.Where(s => s.Kita == kita);
-            List<Student> studentList = students.ToList();
-            return studentList;
+            
+            
+            
+            List<Student> students = this.Students.Where(s => s.Kita == kita).ToList();
+           
+            return students;
         }
 
        
@@ -56,7 +59,7 @@ namespace LINQExample.Data
         {
             //OrderBy and ThenBy Methods are used to sort a list
             List<Student> list =( this.Students.OrderBy(s => s.Kita)
-                                                             .ThenByDescending(s => s.Name)).ToList();
+                                                                    .ThenByDescending(s => s.Name)).ToList();
            
             return list;
         }
