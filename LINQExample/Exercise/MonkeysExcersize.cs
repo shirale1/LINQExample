@@ -157,47 +157,60 @@ namespace LINQ.Exercise
         //1
         public Monkey SearchMonkeyByName(string name)
         {
-
-            return null;
+            Monkey mon = this.Monkeys.Find(x =>, x.name = name);
+                return mon;
         }
         //2
         public List<Monkey> GetAllMonkeysPerLocation(string location)
         {
-            return null;
+           List<Monkey> monkeys=this.Monkeys.Where(x=>.Location=location).ToList();
+          return monkeys;
         }
         //3
         public bool IsThereMonkeyInThatLocation(string location)
         {
-            return false;
+            return(this.Monkeys.Any(x=>.Location=location);
         }
         //4
         public List<Monkey> SortByLocattionAndName()
         {
-
-            return null;
+            List<Monkey> monkeys=(this.Monkeys.OrderBy(x=> x.Location).ThenByDescending(x=> x.Name).ToList();
         }
         //5
         public Monkey SearchMonkeyByNameQuery(string name)
         {
-            return null;
+           List<Monkey> query1=(from x in this.Monkeys where x.Name=name select x).ToList();
+            Monkey monkey=query1.FirstOrDefault();
+            return monkey;   
         }
         //6
         public List<Monkey> GetAllMonkeysPerLocationQuery(string location)
         {
-            return null;
+            List<Monkey> monkeys1=(from x where x.Location=location select x).ToList();
+            return monkeys1;
         }
 
         //7
         //bool desc true if the order is desc or asc
         public List<Monkey> SortByLocattionAndNameQuery(bool desc)
-        {
-            return null;
+        {  
+            List<Monkey> sortby=new List<Monkey>();
+            if (desc == true)
+            {
+                sortby=(from x in this.Monkeys orderby x.location descending, x.name descending select x).ToList();
+            }
+            else
+            {
+                 sortby=(from x in this.Monkeys orderby x.location, x.name select x).ToList();
+            }
+            return sortby;
         }
         //8
        
         public Monkey[] GetAllMonkeysByName(string name)
         {
-            return null;
+           Monkey[] filteredMonkeys = monkeys.Where(monkey => monkey.Name == name).ToArray();
+           return filteredMonkeys;
         }
        
     }
